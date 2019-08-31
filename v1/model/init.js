@@ -1,7 +1,9 @@
 const Product = require('../model/product');
 const Order = require('../model/order');
 
-module.exports = () => {
+
+
+const init = () => {
   Order.sync({ force: true })
 
   Product.sync({ force: true }).then(() => {
@@ -11,3 +13,5 @@ module.exports = () => {
     })
   })
 }
+
+init()
