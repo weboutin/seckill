@@ -6,6 +6,8 @@
   "author": "itgo",
   "license": "MIT",
   "dependencies": {
+    "co": "^4.6.0",
+    "mysql2": "^1.7.0",
     "sequelize": "^5.17.2"
   }
 }

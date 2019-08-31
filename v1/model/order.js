@@ -8,7 +8,14 @@ Order.init({
     autoIncrement: true,
     primaryKey: true
   },
-  uid: Sequelize.STRING
+  uid: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  productId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  }
 }, { sequelize, modelName: 'order' });
 
 

@@ -1,10 +1,11 @@
-const Order = require('./model/order');
-const sequelize = require('./model/getInstance')
+const seckill = require('./service/seckill');
 
-sequelize.sync()
-  .then(() => Order.create({
-    uid: 'itgo'
-  }))
-  .then(order => {
-    console.log(order.toJSON());
-  });
+const productId = 1;
+const uid = 1
+
+seckill(uid, productId)
+
+
+
+
+
