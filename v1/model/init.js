@@ -7,7 +7,7 @@ module.exports = () => {
   Product.sync({ force: true }).then(() => {
     Product.create({
       title: '代购买商品',
-      stock: 10
+      stock: 2
     })
   })
 }

@@ -1,9 +1,10 @@
 const seckill = require('./service/seckill');
 
 const productId = 1;
-const uid = 1
+let uid = 1;
 
-seckill(uid, productId)
+for (let uid = 1; uid <= 10; uid++)
+  seckill(uid, productId)
 
 
 
