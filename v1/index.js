@@ -23,7 +23,6 @@ module.exports = async (uid, productId) => {
     await transaction.commit();
   } catch (err) {
     if (err) {
-      console.log(err)
       await transaction.rollback();
     }
   }

@@ -4,7 +4,8 @@ const co = require('co');
 const assert = require('assert')
 const chalk = require('chalk');
 
-async function main(preDefined_stock, preDefined_productId) {
+
+exports.MySQLOnlyAssert = async (preDefined_stock, preDefined_productId) => {
   try {
     const { stock } = (await Product.findOne({ productId: preDefined_productId })).toJSON()
     //商品库存为0
@@ -19,10 +20,6 @@ async function main(preDefined_stock, preDefined_productId) {
   }
 
 }
-
-co(async () => {
-  await main(2, 1)
-})
 
 
 
