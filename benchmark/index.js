@@ -4,11 +4,16 @@ const v2 = require('../v2');
 const init = require('../common/init');
 const v = process.env.v || '';
 
+//库存数
+const stock = 2;
+//并发用户数
+const cUser = 10;
+//固定商品Id
+const productId = 1;
+
 co(async () => {
-  await init();
-  const productId = 1;
-  // let uid = 1;
-  for (let uid = 1; uid <= 20; uid++) {
+  await init(stock);
+  for (let uid = 1; uid <= cUser; uid++) {
     excute(v, uid, productId)
   }
 })
