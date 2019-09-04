@@ -1,7 +1,5 @@
-const Product = require('./product');
-const Order = require('./order');
-
-
+const Product = require('./models/product');
+const Order = require('./models/order');
 
 const init = () => {
   Order.sync({ force: true })

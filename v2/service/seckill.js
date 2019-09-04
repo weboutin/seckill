@@ -1,10 +1,6 @@
-const Order = require('../model/order');
-const Product = require('../model/product');
-const sequelize = require('../model/getInstance');
-const Sequelize = require('sequelize')
-const Op = Sequelize.Op;
-
-
+const Order = require('../../common/models/order');
+const Product = require('../../common/models/product');
+const sequelize = require('../../common/getInstance');
 
 module.exports = async (uid, productId) => {
   let transaction;

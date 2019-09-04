@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const sequelize = require('./getInstance')
+const sequelize = require('../getInstance')
 
 class Product extends Sequelize.Model { }
 Product.init({

@@ -1,6 +1,6 @@
-
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('seckill', 'root', 'root', {
+const Config = require('../config');
+const sequelize = new Sequelize(Config.mysql.dbname, Config.mysql.user, Config.mysql.password, {
   dialect: 'mysql'
 });
 
