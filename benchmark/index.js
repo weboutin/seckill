@@ -54,7 +54,7 @@ async function excute(uid, productId) {
       await v2(uid, productId);
       break;
     case 'v3':
-      await v3(uid, productId);
+      await v3(uid, productId, stock);
       break;
   }
   checkIsFinish();
