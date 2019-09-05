@@ -1,9 +1,10 @@
 const co = require('co');
 const v1 = require('../v1');
 const v2 = require('../v2');
+const v3 = require('../v3');
 const init = require('../common/init');
 const v = process.env.v || '';
-const { MySQLOnlyAssert } = require('./assert');
+const { MySQLOnlyAssert, RedisOrder } = require('./assert');
 
 //库存数
 const stock = 2;
@@ -17,18 +18,34 @@ let finishedRequest = 0;
 co(async () => {
   await init(stock);
   for (let uid = 1; uid <= cUser; uid++) {
-    excute(v, uid, productId)
+    excute(uid, productId)
   }
 })
 
 function checkIsFinish() {
   finishedRequest++;
   if (finishedRequest >= cUser) {
-    MySQLOnlyAssert(2, 1)
+    checkResult();
   }
 }
 
-async function excute(version, uid, productId) {
+async function checkResult() {
+  let version = v;
+  let preDefined_stock = stock;
+  let preDefined_productId = productId;
+  switch (version) {
+    case 'v1':
+    case 'v2':
+      MySQLOnlyAssert(preDefined_stock, preDefined_productId);
+      break;
+    case 'v3':
+      RedisOrder(preDefined_stock, preDefined_productId)
+
+  }
+}
+
+async function excute(uid, productId) {
+  let version = v;
   switch (version) {
     case 'v1':
       await v1(uid, productId);
@@ -36,8 +53,9 @@ async function excute(version, uid, productId) {
     case 'v2':
       await v2(uid, productId);
       break;
-    default:
-      throw new Error('unknow version')
+    case 'v3':
+      await v3(uid, productId);
+      break;
   }
   checkIsFinish();
 }
