@@ -1,1 +1,4 @@
-exports.KEY_ORDERS = "list:orders"
+exports.KEY_ORDERS = "LIST:orders"
+
+
+exports.KEY_PRODUCT_STOCK = "HASH:PRODUCT_STOCK"

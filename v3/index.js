@@ -4,10 +4,6 @@ const sequelize = require('../common/getInstance');
 const { KEY_ORDERS } = require("../common/models/rediskey")
 
 module.exports = async (uid, productId, stock) => {
-  let ordersCount = await RedisClient.llenAsync(KEY_ORDERS);
-  if (ordersCount >= stock) {
-    return false
-  }
   let transaction;
   try {
     transaction = await sequelize.transaction();

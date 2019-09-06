@@ -2,9 +2,10 @@ const co = require('co');
 const v1 = require('../v1');
 const v2 = require('../v2');
 const v3 = require('../v3');
+const v4 = require('../v4');
 const init = require('../common/init');
 const v = process.env.v || '';
-const { MySQLOnlyAssert, RedisOrder } = require('./assert');
+const { MySQLOnlyAssert, RedisOrderAssert, RedisSeckillAssert } = require('./assert');
 
 //库存数
 const stock = 2;
@@ -39,7 +40,10 @@ async function checkResult() {
       MySQLOnlyAssert(preDefined_stock, preDefined_productId);
       break;
     case 'v3':
-      RedisOrder(preDefined_stock, preDefined_productId)
+      RedisOrderAssert(preDefined_stock, preDefined_productId)
+      break;
+    case 'v4':
+      RedisSeckillAssert(preDefined_stock, preDefined_productId)
 
   }
 }
@@ -55,6 +59,8 @@ async function excute(uid, productId) {
       break;
     case 'v3':
       await v3(uid, productId, stock);
+    case 'v4':
+      await v4(uid, productId, stock);
       break;
   }
   checkIsFinish();
