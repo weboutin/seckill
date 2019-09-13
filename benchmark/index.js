@@ -50,18 +50,24 @@ async function checkResult() {
 
 async function excute(uid, productId) {
   let version = v;
-  switch (version) {
-    case 'v1':
-      await v1(uid, productId);
-      break;
-    case 'v2':
-      await v2(uid, productId);
-      break;
-    case 'v3':
-      await v3(uid, productId, stock);
-    case 'v4':
-      await v4(uid, productId, stock);
-      break;
+  try {
+    switch (version) {
+      case 'v1':
+        await v1(uid, productId);
+        break;
+      case 'v2':
+        await v2(uid, productId);
+        break;
+      case 'v3':
+        await v3(uid, productId, stock);
+        break;
+      case 'v4':
+        await v4(uid, productId, stock);
+        break;
+    }
+    checkIsFinish();
+
+  } catch (e) {
+    console.log(e)
   }
-  checkIsFinish();
 }

@@ -21,7 +21,6 @@ async function init(stock) {
   //init Redis data
   await RedisClient.hmsetAsync(KEY_PRODUCT_STOCK, {
     "stock": stock,
-    "booked": 0
   })
 }
 

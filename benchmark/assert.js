@@ -49,8 +49,8 @@ exports.RedisOrderAssert = async (preDefined_stock, preDefined_productId) => {
 exports.RedisSeckillAssert = async (preDefined_stock, preDefined_productId) => {
   try {
     //被秒杀数等于库存数
-    let { stock, booked } = await RedisClient.hgetallAsync(KEY_PRODUCT_STOCK);
-    assert.equal(stock, booked);
+    let { stock } = await RedisClient.hgetallAsync(KEY_PRODUCT_STOCK);
+    assert.equal(stock, 0);
     //订单量等于库存量
     let ordersCount = await RedisClient.llenAsync(KEY_ORDERS);
     assert.equal(ordersCount, preDefined_stock);
